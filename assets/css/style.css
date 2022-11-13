@@ -1,0 +1,72 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: white;
+  background-image: url(../img/background.jpg);
+  background-size: cover;
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  max-width: 992px;
+  margin: auto;
+}
+
+.carousel {
+  position: relative;
+  background-color: white;
+  height: 200px;
+  display: flex;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.carousel::before,
+.carousel::after {
+  position: absolute;
+  z-index: 2;
+  content: "";
+  width: 200px;
+  height: 100%;
+  top: 0;
+}
+
+.carousel::before {
+  background: linear-gradient(to right, #fff 0%, transparent 100%);
+  left: 0;
+}
+
+.carousel::after {
+  background: linear-gradient(to left, #fff transparent 0%, 100%);
+  right: 0;
+}
+
+.carousel:hover .slide {
+  animation-play-state: paused;
+}
+
+.slide {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  animation: slideshow 20s linear infinite;
+}
+
+.slide__image {
+  height: calc(100% - 20px);
+  margin: 0 10px;
+}
+
+@keyframes slideshow {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
